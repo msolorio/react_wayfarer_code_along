@@ -1,9 +1,12 @@
+import Header from './components/Header';
+import CitiesPage from './pages/CitiesPage';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <h1>React Wayfarer</h1>
+      <Header />
+      <CitiesPage />
     </div>
   );
 }
