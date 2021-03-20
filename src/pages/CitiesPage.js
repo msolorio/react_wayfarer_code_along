@@ -11,6 +11,12 @@ function CitiesPage() {
 
       <main className="featured-city">
         <FeaturedCityInfo featuredCity={citiesData[0]} />
+
+        <div className="post-buttons">
+          <button className="post-button">Add Post</button>
+          {/* <button className="post-button">All Posts</button> */}
+        </div>
+
         <PostsList posts={citiesData[0].posts} />
         {/* <AddPostForm /> */}
       </main>

@@ -20,6 +20,8 @@ ul {
 .city-sidebar {
   border: 2px solid grey;
   padding: 20px;
+  width: 200px;
+  min-width: 200px;
 }
 
 .city-selector, .post {
@@ -40,6 +42,17 @@ ul {
 
 .featured-city-content {
   margin-right: 40px;
+}
+
+.post-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.post-button {
+  margin: 0 0 10px 10px;
+  padding: 7px 10px;
+  cursor: pointer;
 }
 
 .post {
