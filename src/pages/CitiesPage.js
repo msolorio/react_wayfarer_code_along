@@ -1,6 +1,7 @@
 import CitySidebar from '../components/citiesPage/CitySidebar';
 import FeaturedCityInfo from '../components/citiesPage/FeaturedCityInfo';
 import PostsList from '../components/citiesPage/PostsList';
+import AddPostForm from '../components/citiesPage/AddPostForm';
 
 function CitiesPage() {
   return (
@@ -10,7 +11,8 @@ function CitiesPage() {
       <main className="featured-city">
         <FeaturedCityInfo />
 
-        <PostsList />
+        {/* <PostsList /> */}
+        <AddPostForm />
       </main>
     </div>
   );
