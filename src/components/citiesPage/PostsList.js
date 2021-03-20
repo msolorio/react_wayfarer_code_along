@@ -1,12 +1,18 @@
 import Post from './Post';
 
-function PostsList() {
+function PostsList(props) {
+  const posts = props.posts.map((post) => {
+    return (
+      <Post
+        post={post} 
+        key={post.id}
+      />
+    );
+  });
+
   return (
     <ul className="posts-list">
-      <Post />
-      <Post />
-      <Post />
-      <Post />
+      { posts }
     </ul>
   );
 }

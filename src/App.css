@@ -29,6 +29,7 @@ ul {
 .featured-city {
   padding: 20px;
   border: 2px solid grey;
+  flex-grow: 1;
 }
 
 .featured-city-info {
@@ -51,4 +52,8 @@ ul {
 .post-img {
   width: 80px;
   margin-right: 15px;
+}
+
+.post-title {
+  margin-bottom: 8px;
 }

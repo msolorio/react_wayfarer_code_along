@@ -1,13 +1,20 @@
 import CitySidebarCity from './CitySidebarCity';
 
-function CitySidebar() {
+function CitySidebar(props) {
+  const citiesList = props.cities.map((city) => {
+    return (
+      <CitySidebarCity
+        key={city.id}
+        cityName={city.cityName}        
+      />
+    );
+  });
+
   return (
     <aside className="city-sidebar">
       <h2>Cities</h2>
       <ul className="cities-list">
-        <CitySidebarCity />
-        <CitySidebarCity />
-        <CitySidebarCity />
+        { citiesList }
       </ul>
     </aside>
   )
