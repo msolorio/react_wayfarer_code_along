@@ -57,3 +57,16 @@ ul {
 .post-title {
   margin-bottom: 8px;
 }
+
+.form-header {
+  margin-bottom: 8px;
+}
+
+.form-group {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.form-label {
+  width: 50px;
+}
