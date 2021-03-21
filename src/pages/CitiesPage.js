@@ -7,13 +7,18 @@ import AddPostForm from '../components/citiesPage/AddPostForm';
 
 class CitiesPage extends React.Component {
   state = {
-    showForm: false
+    showForm: false,
+    cityIdx: 0
   }
 
   toggleForm = () => {
     this.setState((state) => {
       return { showForm: !state.showForm };
     });
+  }
+
+  updateCity = (index) => {
+    this.setState({ cityIdx: index });
   }
 
   renderButtons() {
@@ -27,17 +32,20 @@ class CitiesPage extends React.Component {
   render() {
     return (
       <div className="main-content"> 
-        <CitySidebar cities={citiesData} />
+        <CitySidebar
+          cities={citiesData} 
+          updateCity={this.updateCity}
+        />
   
         <main className="featured-city">
-          <FeaturedCityInfo featuredCity={citiesData[0]} />
+          <FeaturedCityInfo featuredCity={citiesData[this.state.cityIdx]} />
   
           { this.renderButtons() }
   
           {
             this.state.showForm
             ? <AddPostForm />
-            : <PostsList posts={citiesData[0].posts} />
+            : <PostsList posts={citiesData[this.state.cityIdx].posts} />
           }
         </main>
       </div>

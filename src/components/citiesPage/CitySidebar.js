@@ -1,11 +1,14 @@
-import CitySidebarCity from './CitySidebarCity';
+import CityName from './CityName';
 
 function CitySidebar(props) {
-  const citiesList = props.cities.map((city) => {
+
+  const citiesList = props.cities.map((city, index) => {
     return (
-      <CitySidebarCity
+      <CityName
         key={city.id}
-        cityName={city.cityName}        
+        index={index}
+        cityName={city.cityName}
+        updateCity={props.updateCity}
       />
     );
   });
