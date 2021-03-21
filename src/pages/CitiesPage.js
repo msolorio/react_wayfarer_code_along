@@ -8,7 +8,8 @@ import AddPostForm from '../components/citiesPage/AddPostForm';
 class CitiesPage extends React.Component {
   state = {
     showForm: false,
-    cityIdx: 0
+    cityIdx: 0,
+    citiesData: citiesData
   }
 
   toggleForm = () => {
@@ -19,6 +20,15 @@ class CitiesPage extends React.Component {
 
   updateCity = (index) => {
     this.setState({ cityIdx: index });
+  }
+
+  addPost = (newPost) => {
+    this.setState((state) => {
+      const stateClone = JSON.parse(JSON.stringify(state));
+      stateClone.citiesData[state.cityIdx].posts.unshift(newPost);
+
+      return stateClone;
+    });
   }
 
   renderButtons() {
@@ -33,19 +43,21 @@ class CitiesPage extends React.Component {
     return (
       <div className="main-content"> 
         <CitySidebar
-          cities={citiesData} 
+          cities={this.state.citiesData} 
           updateCity={this.updateCity}
         />
   
         <main className="featured-city">
-          <FeaturedCityInfo featuredCity={citiesData[this.state.cityIdx]} />
+          <FeaturedCityInfo 
+            featuredCity={this.state.citiesData[this.state.cityIdx]} 
+          />
   
           { this.renderButtons() }
   
           {
             this.state.showForm
-            ? <AddPostForm />
-            : <PostsList posts={citiesData[this.state.cityIdx].posts} />
+            ? <AddPostForm addPost={this.addPost} toggleForm={this.toggleForm} />
+            : <PostsList posts={this.state.citiesData[this.state.cityIdx].posts} />
           }
         </main>
       </div>
