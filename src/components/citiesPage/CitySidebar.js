@@ -5,7 +5,7 @@ function CitySidebar(props) {
   const citiesList = props.cities.map((city, index) => {
     return (
       <CityName
-        key={city.id}
+        key={city._id}
         index={index}
         cityName={city.cityName}
         updateCity={props.updateCity}

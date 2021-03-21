@@ -5,7 +5,7 @@ function PostsList(props) {
     return (
       <Post
         post={post} 
-        key={post.id}
+        key={post._id}
       />
     );
   });
