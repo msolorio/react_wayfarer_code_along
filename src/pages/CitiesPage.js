@@ -1,27 +1,48 @@
+import React from 'react';
 import CitySidebar from '../components/citiesPage/CitySidebar';
 import FeaturedCityInfo from '../components/citiesPage/FeaturedCityInfo';
 import PostsList from '../components/citiesPage/PostsList';
 import citiesData from '../citiesData';
 import AddPostForm from '../components/citiesPage/AddPostForm';
 
-function CitiesPage() {
-  return (
-    <div className="main-content"> 
-      <CitySidebar cities={citiesData} />
+class CitiesPage extends React.Component {
+  state = {
+    showForm: false
+  }
 
-      <main className="featured-city">
-        <FeaturedCityInfo featuredCity={citiesData[0]} />
+  toggleForm = () => {
+    this.setState((state) => {
+      return { showForm: !state.showForm };
+    });
+  }
 
-        <div className="post-buttons">
-          <button className="post-button">Add Post</button>
-          {/* <button className="post-button">All Posts</button> */}
-        </div>
+  renderButtons() {
+    return (
+      this.state.showForm
+      ? <button onClick={this.toggleForm}>All Posts</button>
+      : <button onClick={this.toggleForm}>Add Post</button>
+    );
+  }
 
-        <PostsList posts={citiesData[0].posts} />
-        {/* <AddPostForm /> */}
-      </main>
-    </div>
-  );
+  render() {
+    return (
+      <div className="main-content"> 
+        <CitySidebar cities={citiesData} />
+  
+        <main className="featured-city">
+          <FeaturedCityInfo featuredCity={citiesData[0]} />
+  
+          { this.renderButtons() }
+  
+          {
+            this.state.showForm
+            ? <AddPostForm />
+            : <PostsList posts={citiesData[0].posts} />
+          }
+        </main>
+      </div>
+    );
+  }
 }
 
 export default CitiesPage;
